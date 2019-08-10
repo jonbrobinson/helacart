@@ -7,24 +7,24 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: jrcodes/laravel57-php73:latest
+      - image: circleci/php:7.1-node-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # Using the RAM variation mitigates I/O contention
       # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
+      - image: circleci/mysql:5.7-ram
       #
       # - image: redis:2.8.19
 
     steps:
       - checkout
 
-      #- run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-      #- run: sudo docker-php-ext-install zip
+      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo docker-php-ext-install zip
       #- run: sudo apt install php-mysql
-      - run: sudo composer install
+      - run: composer install
 
       # Download and cache dependencies
 #      - restore_cache:
